@@ -1,16 +1,11 @@
-# product_view
+Shoe View UI
+This Flutter UI showcases an elegant and interactive design for displaying sneakers. 
 
-A new Flutter project.
+screenshot:
+![shoe_ui](https://github.com/user-attachments/assets/45062c20-f1d1-49d4-afc5-15ca1ded56ae)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+It features:
+Carousel Slider: A responsive carousel to browse sneaker products.
+Detailed Product Page: Includes animations, color/size selectors, and an "Add to Cart" button.
+Responsive Design: Ensures a seamless experience across devices.
+Ideal for e-commerce apps or product showcases. Built with Flutter, carousel_slider, and animate_do for enhanced user experience.
