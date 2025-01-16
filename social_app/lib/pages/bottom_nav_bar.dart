@@ -25,16 +25,13 @@ class BottomNavBarState extends State<BottomNavBar> {
       extendBody: true,
       body: Stack(
         children: [
-          // The body of the app
           _pages[_selectedIndex],
-
-          // The floating bottom navigation bar with rounded corners
           Positioned(
             bottom: 50,
             left: 50,
             right: 50,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(90), // Rounded corners
+              borderRadius: BorderRadius.circular(90),
               child: Theme(
                 data: ThemeData(canvasColor: Colors.transparent),
                 child: BottomNavigationBar(
@@ -155,6 +152,6 @@ class Explore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        backgroundColor: Colors.amber, body: Center(child: Text("Explore")));
+        backgroundColor: Colors.green, body: Center(child: Text("Explore")));
   }
 }
