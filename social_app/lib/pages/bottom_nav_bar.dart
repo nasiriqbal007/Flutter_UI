@@ -149,7 +149,8 @@ class Favorites extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        backgroundColor: Colors.green, body: Center(child: Text("Explore")));
+        backgroundColor: Color.fromARGB(255, 88, 229, 161),
+        body: Center(child: Text("Favorites")));
   }
 }
 
