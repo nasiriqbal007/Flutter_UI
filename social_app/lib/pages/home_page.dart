@@ -3,9 +3,14 @@ import 'package:social_app/models/post_model.dart';
 import 'package:social_app/widgets/horizontal_story_card.dart';
 import 'package:social_app/widgets/post_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,14 +23,14 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(12),
-              decoration: const BoxDecoration(
-                color: Color(0xFFF9F9F9),
+              decoration: BoxDecoration(
+                color: Colors.transparent.withOpacity(0.04),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.grid_view, color: Colors.black),
             ),
             const Text(
-              "BabaGang",
+              "Social App",
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
@@ -34,8 +39,8 @@ class HomePage extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.all(12),
-              decoration: const BoxDecoration(
-                color: Color(0xFFF9F9F9),
+              decoration: BoxDecoration(
+                color: Colors.transparent.withOpacity(0.04),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.notifications, color: Colors.black),

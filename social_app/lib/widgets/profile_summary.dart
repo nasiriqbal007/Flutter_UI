@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/widgets/custom_button.dart';
 
 class ProfileSummary extends StatelessWidget {
   const ProfileSummary({
@@ -33,8 +32,25 @@ class ProfileSummary extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        CustomButton(
-          text: buttonText,
+        Container(
+          width: 100,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          decoration: BoxDecoration(
+            color: Colors.transparent.withOpacity(0.06),
+            borderRadius: BorderRadius.circular(40),
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: Text(
+                buttonText,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                ),
+              ),
+            ),
+          ),
         ),
       ],
     );

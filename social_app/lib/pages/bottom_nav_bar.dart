@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/pages/home_page.dart';
 import 'package:social_app/pages/profile_page.dart';
@@ -35,102 +34,99 @@ class BottomNavBarState extends State<BottomNavBar> {
               borderRadius: BorderRadius.circular(90),
               child: Theme(
                 data: ThemeData(canvasColor: Colors.transparent),
-                child: FadeInUp(
-                  from: 100,
-                  child: BottomNavigationBar(
-                    onTap: (value) {
-                      setState(() {
-                        _selectedIndex = value;
-                      });
-                    },
-                    showSelectedLabels: false,
-                    showUnselectedLabels: false,
-                    type: BottomNavigationBarType.fixed,
-                    selectedFontSize: 0.0,
-                    unselectedFontSize: 0.0,
-                    currentIndex: _selectedIndex,
-                    items: [
-                      BottomNavigationBarItem(
-                        icon: Padding(
-                          padding: const EdgeInsets.only(
-                            top: 2,
-                            bottom: 2,
-                            left: 0,
-                          ),
-                          child: Container(
-                            padding: const EdgeInsets.all(18),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: _selectedIndex == 0
-                                  ? Colors.white
-                                  : Colors.transparent,
-                            ),
-                            child: Icon(
-                              _selectedIndex == 0
-                                  ? Icons.home
-                                  : Icons.home_outlined,
-                              color: Colors.black,
-                            ),
-                          ),
+                child: BottomNavigationBar(
+                  onTap: (value) {
+                    setState(() {
+                      _selectedIndex = value;
+                    });
+                  },
+                  showSelectedLabels: false,
+                  showUnselectedLabels: false,
+                  type: BottomNavigationBarType.fixed,
+                  selectedFontSize: 0.0,
+                  unselectedFontSize: 0.0,
+                  currentIndex: _selectedIndex,
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 2,
+                          bottom: 2,
+                          left: 0,
                         ),
-                        label: '',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Container(
+                        child: Container(
                           padding: const EdgeInsets.all(18),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: _selectedIndex == 1
+                            color: _selectedIndex == 0
                                 ? Colors.white
                                 : Colors.transparent,
                           ),
                           child: Icon(
-                            _selectedIndex == 1
-                                ? Icons.explore
-                                : Icons.explore_outlined,
+                            _selectedIndex == 0
+                                ? Icons.home
+                                : Icons.home_outlined,
                             color: Colors.black,
                           ),
                         ),
-                        label: '',
                       ),
-                      BottomNavigationBarItem(
-                        icon: Container(
-                          padding: const EdgeInsets.all(18),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: _selectedIndex == 2
-                                ? Colors.white
-                                : Colors.transparent,
-                          ),
-                          child: Icon(
-                            _selectedIndex == 2
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: Colors.black,
-                          ),
+                      label: '',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Container(
+                        padding: const EdgeInsets.all(18),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _selectedIndex == 1
+                              ? Colors.white
+                              : Colors.transparent,
                         ),
-                        label: '',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Container(
-                          padding: const EdgeInsets.all(18),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: _selectedIndex == 3
-                                ? Colors.white
-                                : Colors.transparent,
-                          ),
-                          child: Icon(
-                            _selectedIndex == 3
-                                ? Icons.person
-                                : Icons.person_outline,
-                            color: Colors.black,
-                          ),
+                        child: Icon(
+                          _selectedIndex == 1
+                              ? Icons.explore
+                              : Icons.explore_outlined,
+                          color: Colors.black,
                         ),
-                        label: '',
                       ),
-                    ],
-                  ),
+                      label: '',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Container(
+                        padding: const EdgeInsets.all(18),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _selectedIndex == 2
+                              ? Colors.white
+                              : Colors.transparent,
+                        ),
+                        child: Icon(
+                          _selectedIndex == 2
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: Colors.black,
+                        ),
+                      ),
+                      label: '',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Container(
+                        padding: const EdgeInsets.all(18),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _selectedIndex == 3
+                              ? Colors.white
+                              : Colors.transparent,
+                        ),
+                        child: Icon(
+                          _selectedIndex == 3
+                              ? Icons.person
+                              : Icons.person_outline,
+                          color: Colors.black,
+                        ),
+                      ),
+                      label: '',
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/models/story_model.dart';
 
@@ -31,10 +32,11 @@ class HorizontalStoryCard extends StatelessWidget {
                     alignment: Alignment.bottomCenter,
                     clipBehavior: Clip.none,
                     children: [
-                      const CircleAvatar(
+                      CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: 28,
-                        // backgroundImage: NetworkImage(story.imageUrl),
+                        backgroundImage:
+                            CachedNetworkImageProvider(story.imageUrl),
                       ),
                       if (index == 0)
                         Positioned(
@@ -44,7 +46,7 @@ class HorizontalStoryCard extends StatelessWidget {
                                 horizontal: 8, vertical: 2),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: Colors.black,
+                              color: Colors.red,
                             ),
                             child: const Text(
                               'Live',

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -108,45 +109,7 @@ class _ProfilePageState extends State<ProfilePage>
                     top: headerHeight * 1.7,
                     left: 5,
                     right: 5,
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        IntrinsicHeight(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              ProfileSummary(
-                                count: '51 K',
-                                text: 'Followers',
-                                buttonText: 'Follow',
-                              ),
-                              VerticalDivider(
-                                color: Color(0xFFCCCDCC),
-                                thickness: 2,
-                                indent: 2,
-                                endIndent: 80,
-                              ),
-                              ProfileSummary(
-                                text: "Followings",
-                                count: "1203",
-                                buttonText: 'Message',
-                              ),
-                              VerticalDivider(
-                                color: Color(0xFFCCCDCC),
-                                thickness: 2,
-                                indent: 2,
-                                endIndent: 80,
-                              ),
-                              ProfileSummary(
-                                count: "500",
-                                text: "Posts",
-                                buttonText: 'Insight',
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: userStatics(),
                   ),
                 ],
               ),
@@ -164,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage>
                   bottom: 8,
                   top: 0,
                 ),
-                dividerColor: Colors.grey.shade200,
+                dividerColor: Colors.transparent,
                 indicatorColor: Colors.black,
                 indicatorSize: TabBarIndicatorSize.tab,
                 tabs: [
@@ -192,40 +155,90 @@ class _ProfilePageState extends State<ProfilePage>
               ),
             ),
             Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: MasonryGridView.builder(
-                      itemCount: imageList.length,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 12,
-                      gridDelegate:
-                          const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 8),
+                      child: MasonryGridView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: imageList.length,
+                        mainAxisSpacing: 12,
+                        crossAxisSpacing: 12,
+                        gridDelegate:
+                            const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                        ),
+                        itemBuilder: (BuildContext context, int index) {
+                          final ImageItem image = imageList[index];
+                          return ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child:
+                                  CachedNetworkImage(imageUrl: image.imageurl));
+                        },
                       ),
-                      itemBuilder: (BuildContext context, int index) {
-                        final ImageItem image = imageList[index];
-                        return ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
-                            image.imageurl,
-                            fit: BoxFit.contain,
-                          ),
-                        );
-                      },
                     ),
-                  ),
-                  const Center(child: Text("Tab 2 Content")),
-                  const Center(child: Text("Tab 3 Content")),
-                  const Center(child: Text("Tab 4 Content")),
-                ],
+                    Container(
+                        color: Colors.green,
+                        child: const Center(child: Text("Tab 2 Content"))),
+                    Container(
+                        color: Colors.deepPurple,
+                        child: const Center(child: Text("Tab 3 Content"))),
+                    Container(
+                        color: Colors.teal,
+                        child: const Center(child: Text("Tab 4 Content"))),
+                  ],
+                ),
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Column userStatics() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        IntrinsicHeight(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ProfileSummary(
+                count: '51 K',
+                text: 'Followers',
+                buttonText: 'Follow',
+              ),
+              VerticalDivider(
+                color: Color(0xFFCCCDCC),
+                thickness: 2,
+                indent: 2,
+                endIndent: 80,
+              ),
+              ProfileSummary(
+                text: "Followings",
+                count: "1203",
+                buttonText: 'Message',
+              ),
+              VerticalDivider(
+                color: Color(0xFFCCCDCC),
+                thickness: 2,
+                indent: 2,
+                endIndent: 80,
+              ),
+              ProfileSummary(
+                count: "500",
+                text: "Posts",
+                buttonText: 'Insight',
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:social_app/models/post_model.dart';
@@ -14,68 +15,78 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(30),
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Image.network(
-                width: double.infinity,
-                post.imageUrl,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 10,
-            left: 16,
-            child: userDetails(),
-          ),
-          Positioned(
-            top: 10,
-            right: 10,
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.transparent.withOpacity(0.09),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(Icons.more_vert, color: Colors.white),
-            ),
-          ),
-          Positioned(
-            bottom: 55,
-            left: 16,
-            child: userStatic(),
-          ),
-          Positioned(
-            bottom: 16,
-            left: 16,
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: post.description,
-                    style: const TextStyle(
-                      color: Colors.white38,
+      child: Card(
+        elevation: 0,
+        color: Colors.grey.shade100,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: CachedNetworkImage(
+                  imageUrl: post.imageUrl,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.black45,
                     ),
                   ),
-                  const TextSpan(
-                    text: "\n",
-                  ),
-                  TextSpan(
-                    text: post.tags,
-                    style: const TextStyle(
-                      color: Colors.white38,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
-        ],
+            Positioned(
+              top: 10,
+              left: 16,
+              child: userDetails(),
+            ),
+            Positioned(
+              top: 10,
+              right: 10,
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.transparent.withOpacity(0.09),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.more_vert, color: Colors.white),
+              ),
+            ),
+            Positioned(
+              bottom: 55,
+              left: 16,
+              child: userStatic(),
+            ),
+            Positioned(
+              bottom: 16,
+              left: 16,
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: post.description,
+                      style: const TextStyle(
+                        color: Colors.white38,
+                      ),
+                    ),
+                    const TextSpan(
+                      text: "\n",
+                    ),
+                    TextSpan(
+                      text: post.tags,
+                      style: const TextStyle(
+                        color: Colors.white38,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
